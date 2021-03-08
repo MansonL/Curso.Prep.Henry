@@ -10,6 +10,14 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+  var arreglo = new Array();
+  var i=0;
+  for (const key in objeto) {
+    i++;
+    var arreglo$i = [`${key}`, parseInt(`${objeto[key]}`)];
+    arreglo.push(arreglo$i);
+  }
+  return arreglo
 }
 
 
@@ -18,6 +26,23 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  var key = [], value = [];
+  const objeto = {};
+  var i = 0, j=0;
+  for (let i= 0; i < string.length; i++) {
+   if(key.indexOf(string[i])===-1){
+     key[j]=string[i];
+     value[j]=0;
+     j++;
+   }
+   if(key.indexOf(string[i])!==-1){
+     value[key.indexOf(string[i])]+=1;
+   }
+ }
+  for (let i= 0; i < key.length; i++) {
+    objeto[key[i]]=value[i];
+  }
+return objeto
 }
 
 
@@ -62,8 +87,8 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
-  var numeroToString = Array.from(numero.toString());
-  if((numeroToString.reverse()).join('')===numero.toString()){
+  var numeroToArray = Array.from(numero.toString());
+  if((numeroToArray.reverse()).join('')===numero.toString()){
      return "Es capicua"
   }
   else{
@@ -77,6 +102,18 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
+  cadenaToArray = Array.from(cadena);
+  cadenaModified = [];
+  if(cadenaToArray.indexOf('a')!==-1 || cadenaToArray.indexOf('b')!==-1 || cadenaToArray.indexOf('c')!==-1){
+    function validos(character){
+        return (character!=='a' & character!=='b' & character!=='c')
+    }
+    cadenaModified = cadenaToArray.filter(validos) 
+    return cadenaModified.join('')
+  }
+  else {
+    return cadena
+  }
 }
 
 
@@ -84,6 +121,19 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+  arr.sort(order);
+  function order (a,b){
+   if(a.length<b.length){
+     return -1
+   }
+   if(a.length>b.length){
+     return 1
+   }
+   else{
+     return 0
+   }
+  }
+  return arr
 }
 
 
@@ -93,6 +143,13 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
+  var interseccion = [];
+  arreglo1.forEach(element => {
+    if(arreglo2.includes(element)){
+      interseccion.push(element);
+    }
+  });
+  return interseccion
 }
 
 
